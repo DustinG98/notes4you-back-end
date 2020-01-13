@@ -6,8 +6,18 @@
 
 
 ### Headers
-| Name              | Type           |
+| Name              | Type            |
 | ----------------- |:---------------:|
-| Username          | String          |
-| Email             | String          |
-| Password          | String          |
+| None              | none            |
+
+### Example Request
+```javascript
+axiosWithAuth.post('/register', {
+        "username": "test123",
+        "email": "test@test.com",
+        "password": "test123"
+})
+```
+
+### Example Response
+`User Added!`
