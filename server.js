@@ -1,50 +1,29 @@
 const express = require('express')
 const cors = require('cors')
+const mongoose = require('mongoose')
+
+require('dotenv').config();
 
 const app = express();
-
-app.use(cors())
-app.use(express.json())
-
-const database = {
-    users: [
-        {id: "123", name: 'Dusty', email: 'contact@dustingraham.tech', password: 'cookies', entries: 0, joined: new Date()},
-        {id: "1235", name: 'Sally', email: 'sally@gmail.com', password: 'bananas', entries: 0, joined: new Date()} 
-    ]
+const port = process.env.PORT || 5000;
+const corsOptions = {
+    exposedHeaders: ['auth-token', 'user_id']
 }
 
-/* 
-/users/signin -> POST - success/fail
-/users/register -> POST - User
+app.use(cors(corsOptions))
+app.use(express.json())
 
-AUTHENTICATION REQUIRED
-
-
-USERS
-
-/users -> GET - All users //AUTH
-/users/:userId/ -> GET - User //AUTH
-/users/:userId/ -> PUT - Update User //AUTH
-/user/:userId/ -> DELETE - Delete User //AUTH
-
-NOTE GROUPS
-/users/:userId/notes/ -> GET - user notegroups & notes //AUTH
-/users/:userId/notes/ -> POST - add empty note group //AUTH
-/users/:userId/notes/:noteGroupId/ -> DELETE - delete note group with notes in it //AUTH
-/users/:userId/notes/:noteGroupId/ -> PUT - update note group //AUTH
-
-NOTES
-
-/users/:userId/notes/:noteGroupId/ -> POST - add note //AUTH
-/users/:userId/notes/:noteGroupId/:noteId -> DELETE - delete note //AUTH
-/users/:userId/notes/:noteGroupId/:noteId -> PUT - update note //AUTH
-*/
-
-
-app.get('/', (req, res) => {
-    res.send(database.users)
+const uri = process.env.ATLAS_URI
+mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
+const connection = mongoose.connection;
+connection.once('open', () => {
+    console.log('MongoDB database connected established')
 })
 
-app.listen(5000, () => {
+const authRouter = require('./routes/auth')
+
+app.use('/api/auth/users', authRouter)
+
+app.listen(port, () => {
     console.log('connected')
 })
