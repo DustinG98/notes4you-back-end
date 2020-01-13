@@ -1,9 +1,14 @@
 # notes4you-back-end
 
-[Register](#register-user)
-[Sign In](#sign-in)
-[Get All Users](#get-all-users)
 
+## Index
+***
+### [Register](#register-user)
+***
+### [Sign In](#sign-in)
+***
+### [Get All Users](#get-all-users)
+***
 
 
 ***
