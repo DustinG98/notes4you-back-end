@@ -1,17 +1,17 @@
 # notes4you-back-end
 
 ***
-## Register User
+## **Register User**
 ***
 `POST /api/auth/users/register`
 
 
-### Headers
+#### Headers
 | Name              | Type            |
 | ----------------- |:---------------:|
 | None              | none            |
 
-### Example Request
+#### Example Request
 ```javascript
 axios.post('/register', {
         "username": "test123",
@@ -20,22 +20,22 @@ axios.post('/register', {
 })
 ```
 
-### Example Response
+#### Example Response
 `User Added!`
 
 
 ***
-## Sign In
+## **Sign In**
 ***
 `POST /api/auth/users/signin`
 
 
-### Headers
+#### Headers
 | Name              | Type            |
 | ----------------- |:---------------:|
 | None              | none            |
 
-### Example Request
+#### Example Request
 ```javascript
 axios.post('/signin', {
         "email": "test@test.com",
@@ -43,26 +43,26 @@ axios.post('/signin', {
 })
 ```
 
-### Example Response
+#### Example Response
 `Logged In!`
 
 ***
-## Get All Users
+## **Get All Users**
 ***
 `GET /api/auth/users`
 
 
-### Headers
+#### Headers
 | Name                    | Type              |
 | ----------------------- |:-----------------:|
 | auth-token              | String            |
 
-### Example Request
+#### Example Request
 ```javascript
 axiosWithAuth().post('/')
 ```
 
-### Example Response
+#### Example Response
 ```json
 [
     {
