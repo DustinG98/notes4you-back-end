@@ -8,8 +8,8 @@ const bcrypt = require('bcryptjs')
 const verify = require('./verifyToken')
 
 /* 
-/users/signin -> POST - success/fail
-/users/register -> POST - User
+/users/signin -> POST - success/fail - DONE
+/users/register -> POST - User - DONE
 
 AUTHENTICATION REQUIRED
 
@@ -76,12 +76,43 @@ router.route('/register').post(async (req, res) => {
         .catch(err => res.status(400).json('Error: ' + err))
 })
 
-
 //ALL USERS
 router.route('/').get(verify, (req, res) => {
     User.find()
         .then(users => res.json(users))
         .catch(err => res.status(400).json('Error: ' + err))
+})
+
+//GET USER BY ID
+router.route('/:id').get(verify, (req, res) => {
+    User.findById(req.params.id)
+        .then(user => res.send(user))
+        .catch(err => res.status(400).json('Error: ' + err))
+})
+
+//UPDATE USER
+router.route('/:id').put(verify, (req, res) => {
+    User.findById(req.params.id)
+        .then(async user => {
+            const password = req.body.password;
+            const salt = await bcrypt.genSalt(10);
+            const hashPassword = await bcrypt.hash(password, salt)
+            user.email = req.body.email;
+            user.username = req.body.username;
+            user.hashPassword = hashPassword;
+            user.save()
+            res.json('User Updated!')
+        })
+        .catch(err => res.status(400).json('Error: ' + err))
+})
+
+//DELETE USER
+router.route('/:id').delete(verify, (req, res) => {
+    User.findById(req.params.id)
+        .then(user => {
+            user.remove()
+            res.json('User Deleted!')
+        })
 })
 
 module.exports = router;
