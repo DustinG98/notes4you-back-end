@@ -12,7 +12,7 @@
 
 ### Example Request
 ```javascript
-axiosWithAuth.post('/register', {
+axios.post('/register', {
         "username": "test123",
         "email": "test@test.com",
         "password": "test123"
@@ -21,3 +21,26 @@ axiosWithAuth.post('/register', {
 
 ### Example Response
 `User Added!`
+
+
+## Sign In
+***
+`POST /api/auth/users/signin`
+
+
+### Headers
+| Name              | Type            |
+| ----------------- |:---------------:|
+| None              | none            |
+
+### Example Request
+```javascript
+axios.post('/login', {
+        "email": "test@test.com",
+        "password": "test123"
+})
+```
+
+### Example Response
+`Logged In!`
+
