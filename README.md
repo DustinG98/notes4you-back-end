@@ -6,6 +6,8 @@
 
 
 ### Headers
-| name          | value         |
-| ------------- |:-------------:|
-| none          | none          |
+| Name              | Type           |
+| ----------------- |:---------------:|
+| Username          | String          |
+| Email             | String          |
+| Password          | String          |
