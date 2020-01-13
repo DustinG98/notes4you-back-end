@@ -1,6 +1,8 @@
 # notes4you-back-end
 
-##Register User
+## Register User
 ***
 `POST /api/auth/users/register`
-###Headers
+
+
+### Headers
