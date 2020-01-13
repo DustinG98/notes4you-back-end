@@ -14,11 +14,30 @@ const database = {
 }
 
 /* 
-/ -> GET - return all users
-/signin -> POST - success/fail
-/register -> POST - User
-/profile/:userId -> GET - User
+/users/signin -> POST - success/fail
+/users/register -> POST - User
 
+AUTHENTICATION REQUIRED
+
+
+USERS
+
+/users -> GET - All users //AUTH
+/users/:userId/ -> GET - User //AUTH
+/users/:userId/ -> PUT - Update User //AUTH
+/user/:userId/ -> DELETE - Delete User //AUTH
+
+NOTE GROUPS
+/users/:userId/notes/ -> GET - user notegroups & notes //AUTH
+/users/:userId/notes/ -> POST - add empty note group //AUTH
+/users/:userId/notes/:noteGroupId/ -> DELETE - delete note group with notes in it //AUTH
+/users/:userId/notes/:noteGroupId/ -> PUT - update note group //AUTH
+
+NOTES
+
+/users/:userId/notes/:noteGroupId/ -> POST - add note //AUTH
+/users/:userId/notes/:noteGroupId/:noteId -> DELETE - delete note //AUTH
+/users/:userId/notes/:noteGroupId/:noteId -> PUT - update note //AUTH
 */
 
 
