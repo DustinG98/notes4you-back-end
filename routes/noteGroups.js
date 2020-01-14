@@ -1,6 +1,8 @@
 const noteGroups = require('express').Router();
 const User = require('../models/user.model')
 
+const notes = require('./notes')
+
 const verify = require('./verifyToken')
 
 //GET User NoteGroups and notes
@@ -57,5 +59,11 @@ noteGroups.route('/:noteGroupId').put(verify, (req, res) => {
             res.json('Note Group Updated!')
         })
 })
+
+noteGroups.use('/:noteGroupId', (req, res, next) => {
+    req.noteGroupId = req.params.noteGroupId;
+    req.id = req.id
+    next();
+}, notes)
 
 module.exports = noteGroups;
