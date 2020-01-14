@@ -173,7 +173,7 @@ axiosWithAuth().put('/:id', {
 ```
 
 ***
-## **Get All Users**
+## **Delete User**
 ***
 `DELETE /api/auth/users/:id`
 
