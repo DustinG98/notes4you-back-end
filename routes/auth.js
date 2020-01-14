@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const noteGroups = require('./noteGroups')
 
 const User = require('../models/user.model')
 const jwt = require('jsonwebtoken')
@@ -114,5 +115,12 @@ router.route('/:id').delete(verify, (req, res) => {
             res.json('User Deleted!')
         })
 })
+
+
+//Connect noteGroups route
+router.use('/:id/notes', (req, res, next) => {
+    req.id = req.params.id;
+    next();
+}, noteGroups)
 
 module.exports = router;

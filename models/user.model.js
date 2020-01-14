@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
 
+const noteGroupsSchema = require('./noteGroup.model')
+
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
@@ -22,7 +24,7 @@ const userSchema = new Schema({
         max: 1024,
         min: 6
     },
-    noteGroups: []
+    noteGroups: [noteGroupsSchema]
 }, {
     timestamps: true,
 })
