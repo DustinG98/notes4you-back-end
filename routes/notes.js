@@ -40,6 +40,8 @@ notes.route('/:noteId').delete(verify, (req, res) => {
         })
 })
 
+
+//UPDATE NOTE BY ID
 notes.route('/:noteId').put(verify, (req, res) => {
     User.findById(req.id)
         .then(user => {
