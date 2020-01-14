@@ -44,7 +44,7 @@ router.route('/signin').post(async (req, res) => {
 
     //check if user exists
     const user = await User.findOne({email: email});
-    if(user === false) return res.status(400).send('Email or password is wrong.');
+    if(user === null) return res.status(400).send('Email or password is wrong.');
 
     //PASSWORD IS CORRECT
     const validPassword = await bcrypt.compare(password, user.hashPassword)
