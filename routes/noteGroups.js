@@ -1,17 +1,10 @@
 const noteGroups = require('express').Router();
 const User = require('../models/user.model')
-const cors = require('cors')
 
 const notes = require('./notes')
 
 const verify = require('./verifyToken')
 
-const corsOptions = {
-    origin: "*",
-    exposedHeaders: ['auth-token', 'user_id']
-}
-
-noteGroups.use(cors(corsOptions))
 
 //GET User NoteGroups and notes
 noteGroups.route('/').get(verify, (req, res) => {
