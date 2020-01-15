@@ -1,6 +1,6 @@
 const noteGroups = require('express').Router();
 const User = require('../models/user.model')
-const cors = ('cors')
+const cors = require('cors')
 
 const notes = require('./notes')
 

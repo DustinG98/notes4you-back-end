@@ -3,7 +3,7 @@ const User = require('../models/user.model')
 
 const verify = require('./verifyToken')
 
-const cors = ('cors')
+const cors = require('cors')
 
 const corsOptions = {
     origin: "*",

@@ -35,7 +35,7 @@ NOTES
 /users/:userId/notes/:noteGroupId/:noteId -> PUT - update note //AUTH
 */
 
-const cors = ('cors')
+const cors = require('cors')
 
 const corsOptions = {
     origin: "*",
