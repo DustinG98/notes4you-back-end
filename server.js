@@ -8,7 +8,7 @@ require('dotenv').config();
 const app = express();
 
 const corsOptions = {
-    origin: "https://notes4you.netlify.com/login",
+    origin: "https://notes4you.netlify.com",
     exposedHeaders: ['auth-token', 'user_id']
 }
 
