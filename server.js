@@ -28,6 +28,8 @@ const authRouter = require('./routes/auth')
 
 app.use('/api/auth/users', authRouter)
 
+app.options('*', cors())
+
 app.listen(port, () => {
     console.log('connected')
 })
