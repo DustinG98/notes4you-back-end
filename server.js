@@ -11,7 +11,7 @@ const corsOptions = {
     exposedHeaders: ['auth-token', 'user_id']
 }
 
-app.use(cors(corsOptions))
+app.use(cors())
 
 const port = process.env.PORT || 5000;
 app.use(express.json())
