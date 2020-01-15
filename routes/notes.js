@@ -3,6 +3,14 @@ const User = require('../models/user.model')
 
 const verify = require('./verifyToken')
 
+const cors = ('cors')
+
+const corsOptions = {
+    origin: "*",
+    exposedHeaders: ['auth-token', 'user_id']
+}
+
+notes.use(cors(corsOptions))
 
 //POST - Add new note to noteGroup
 notes.route('/').post(verify, (req, res) => {

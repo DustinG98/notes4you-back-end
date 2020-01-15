@@ -35,6 +35,14 @@ NOTES
 /users/:userId/notes/:noteGroupId/:noteId -> PUT - update note //AUTH
 */
 
+const cors = ('cors')
+
+const corsOptions = {
+    origin: "*",
+    exposedHeaders: ['auth-token', 'user_id']
+}
+
+router.use(cors(corsOptions))
 
 
 //SIGN IN
