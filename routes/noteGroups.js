@@ -17,10 +17,9 @@ noteGroups.route('/:id').get(verify, (req, res) => {
     User.findById(req.id)
         .then(user => {
             let noteGroup = user.noteGroups.filter(noteGroup => {
-                return noteGroup._id === req.params.id
+                return String(noteGroup._id) === req.params.id
             })
-
-            res.json(noteGroup)
+            res.json(noteGroup[0])
         })
 })
 
