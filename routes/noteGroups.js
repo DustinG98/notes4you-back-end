@@ -13,6 +13,17 @@ noteGroups.route('/').get(verify, (req, res) => {
         .catch(err => res.status(400).json('Error: ' + err))
 })
 
+noteGroups.route('/:id').get(verify, (req, res) => {
+    User.findById(req.id)
+        .then(user => {
+            let noteGroup = user.noteGroups.filter(noteGroup => {
+                return noteGroup._id === req.params.id
+            })
+
+            res.json(noteGroup)
+        })
+})
+
 //POST - Add noteGroup
 noteGroups.route('/').post(verify, (req, res) => {
     const title = req.body.title;
