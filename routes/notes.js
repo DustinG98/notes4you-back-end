@@ -21,6 +21,19 @@ notes.route('/').post(verify, (req, res) => {
         })
 })
 
+notes.route('/:noteId').get(verify, (req, res) => {
+    User.findById(req.id)
+        .then(user => {
+            let theNoteGroup = user.noteGroups.filter(noteGroup => {
+                return String(noteGroup._id) === req.noteGroupId
+            })
+            let theNote = theNoteGroup[0].notes.filter(note => {
+                return String(note._id) !== req.params.noteId
+            })
+            res.json(theNote[0])
+        })
+})
+
 
 //DELETE - Delete Note by ID
 notes.route('/:noteId').delete(verify, (req, res) => {
