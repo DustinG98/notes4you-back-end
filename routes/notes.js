@@ -28,7 +28,7 @@ notes.route('/:noteId').get(verify, (req, res) => {
                 return String(noteGroup._id) === req.noteGroupId
             })
             let theNote = theNoteGroup[0].notes.filter(note => {
-                return String(note._id) !== req.params.noteId
+                return String(note._id) === req.params.noteId
             })
             res.json(theNote[0])
         })
