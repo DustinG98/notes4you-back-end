@@ -35,7 +35,7 @@ noteGroups.route('/').post(verify, (req, res) => {
         .then(user => {
             user.noteGroups.push(newNoteGroup)
             user.save()
-            res.json('Note Group Added!')
+            res.json(user.noteGroups[user.noteGroups.length -1])
         })
         .catch(err => res.status(400).json('Error: ' + err))
 })
